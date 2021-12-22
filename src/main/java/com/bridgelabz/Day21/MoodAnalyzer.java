@@ -1,5 +1,7 @@
 package com.bridgelabz.Day21;
 
+import MoodAnalyzerProb.MoodAnalyserException;
+
 public class MoodAnalyzer {
 	String message;
 
@@ -8,26 +10,21 @@ public class MoodAnalyzer {
 		this.message = message;
 	}
 
-	public String analyzeMood() {
+	public String analyzeMood() throws MoodAnalyserException {
 		try {
-			if (message.contains("happy")) {
-				return "happy";
-			} else
+			if (this.message.length() == 0) {
+				throw new MoodAnalyserException("Invalid Mood");
+			}
+			if (this.message.toLowerCase().contains("sad")) {
 				return "sad";
+			} else {
+				return "happy";
+			}
 		} catch (NullPointerException e) {
-			System.out.println("Exception occured: " + e);
-			return "happy";
-		}
-	}
 
-//Driver class
-	/*
-	 * public static void main(String[] args) {
-	 * 
-	 * MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
-	 * System.out.println(moodAnalyzer.analyzeMood(NULL));
-	 * 
-	 * }
-	 */
+		}
+		return "happy";
+
+	}
 
 }

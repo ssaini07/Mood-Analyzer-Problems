@@ -16,4 +16,18 @@ public class MoodAnalyzerTest {
 		String expected = "happy";
 		Assert.assertEquals(expected, actual);
 	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	public void nullMood() throws MoodAnalyserException {
+		MoodAnalyzer moodAnalyze = new MoodAnalyzer(" ");
+		String actual = null;
+		try {
+			actual = moodAnalyze.analyzeMood();
+		} catch (MoodAnalyserException e) {
+			String expected = "Hello";
+			System.out.println(e);
+			Assert.assertEquals(expected, actual);
+		}
+	}
 }
